@@ -46,7 +46,7 @@ Install-Module Microsoft.Graph -Scope CurrentUser
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/yourusername/teams-owner-report.git
+git clone https://github.com/fabayram/teams-owner-report.git
 cd teams-owner-report
 ```
 
