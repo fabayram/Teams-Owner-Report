@@ -133,13 +133,6 @@ LinkedIn: [@fbayram](https://www.linkedin.com/in/fbayram/)
 
 ---
 
-## 🙏 Acknowledgments
-- Microsoft Graph Team
-- PowerShell Community
-- All Contributors
-
----
-
 <p align="center">Made with ❤️ for the community</p>
 
 If you like this project, please consider giving it a ⭐!
