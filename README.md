@@ -10,10 +10,7 @@ Automatically monitor and report Microsoft Teams without owners through PowerShe
 - [Project Structure](#project-structure)
 - [Core Functions](#core-functions)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ---
 
