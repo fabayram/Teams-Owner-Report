@@ -128,8 +128,8 @@ Send-MailMessage -SmtpServer $config.SmtpServer -From $config.From -To $config.R
 
 ## 👨‍💻 Author
 **Fatih BAYRAM**  
-GitHub: [@yourusername](https://github.com/fabayram?tab=repositories)  
-LinkedIn: [@yourprofile]((https://www.linkedin.com/in/fbayram/))
+GitHub: [@fabayram](https://github.com/fabayram?tab=repositories)  
+LinkedIn: [@yourprofile](https://www.linkedin.com/in/fbayram/)
 
 ---
 
