@@ -1,173 +1,145 @@
-📌 Overview
+# Teams Owner Report Generator
 
-This PowerShell script connects to Microsoft Graph, retrieves all Microsoft Teams without owners, generates an HTML report using an XML template, and sends it via email.
+Automatically monitor and report Microsoft Teams without owners through PowerShell automation.
 
-The script is modular, configurable, and follows best practices for maintainability and scalability.
+## 📌 Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Core Functions](#core-functions)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-⚡ Features
+---
 
-✅ Automated Microsoft Graph Connection using credentials from config.json
-✅ Retrieves Teams without Owners efficiently
-✅ Generates an HTML report using a customizable EmailTemplate.xml
-✅ Sends an email report using SMTP settings from config.json
-✅ Structured in multiple files for clean and maintainable code
+## ✨ Features
+- 🔐 Secure Microsoft Graph authentication
+- 🔍 Teams ownership monitoring
+- 📊 Customizable HTML reporting
+- 📧 Automated email notifications
+- 📦 Modular architecture
 
-📂 Project Structure
+---
 
-📂 TeamsOwnerReport
-│── 📄 TeamsOwnerReport.ps1  # Main script
-│── 📄 Functions.ps1         # Contains all PowerShell functions
-│── 📄 config.json           # Configuration file (credentials & settings)
-│── 📄 EmailTemplate.xml     # HTML email template
-│── 📄 README.md             # Documentation
+## 📋 Prerequisites
+### Required Components
+- PowerShell 5.1 or higher
+- Microsoft Graph PowerShell SDK
+- Azure AD App Registration with appropriate permissions
 
-🔧 Prerequisites
+### 🔑 Required Permissions
+Your Azure AD App needs the following Microsoft Graph API permissions:
+- `Directory.Read.All`
+- `Group.Read.All`
+- `TeamMember.Read.All`
+- `Team.ReadBasic.All`
 
-🛠 System Requirements
+---
 
-PowerShell 7+ (Recommended)
-
-Microsoft Graph PowerShell SDKInstall with:```powershell
+## 🚀 Installation
+### Install Microsoft Graph PowerShell SDK
+```powershell
 Install-Module Microsoft.Graph -Scope CurrentUser
+```
 
-🔑 Microsoft Graph API Permissions
+### Clone the Repository
+```bash
+git clone https://github.com/yourusername/teams-owner-report.git
+cd teams-owner-report
+```
 
-The App Registration in Azure AD must have the following permissions:
-
-`Directory.Read.All`
-
-`Group.Read.All`
-
-`TeamMember.Read.All`
-
-`Team.ReadBasic.All`
-
-⚙️ Configuration (`config.json`)
-
-The script uses a JSON configuration file (`config.json`) to store all settings:
-
-json
+### Configure Settings
+Edit `config.json` to match your environment:
+```json
 {
-"MicrosoftGraph": {
-"ClientId": "your-client-id",
-"TenantId": "your-tenant-id",
-"ClientSecret": "your-client-secret",
-"AppName": "your-app-name"
-},
-"SMTP": {
-"Server": "smtp.yourdomain.com",
-"From": "noreply@yourcompany.com",
-"Recipients": [
-"user1@example.com",
-"user2@example.com"
-]
+    "MicrosoftGraph": {
+        "ClientId": "your-client-id",
+        "TenantId": "your-tenant-id",
+        "ClientSecret": "your-client-secret",
+        "AppName": "your-app-name"
+    },
+    "SMTP": {
+        "Server": "smtp.yourdomain.com",
+        "From": "noreply@yourcompany.com",
+        "Recipients": ["user1@example.com"]
+    }
 }
-}
+```
 
-📌 Modify this file with your actual credentials before running the script.
-
-📜 Email Template (`EmailTemplate.xml`)
-
-The script loads the HTML email content from an external XML file (`EmailTemplate.xml`).You can customize it without modifying the script.
-
-xml
-
-[$Date] Report: Teams Without Owners
-
-
-The `$TableHTML` placeholder is dynamically replaced with the Teams data.
-
-🔍 Functions Overview (`Functions.ps1`)
-
-Function
-
-Description
-
-`Get-Config`
-
-Loads and parses the `config.json` file.
-
-`Connect-MicrosoftGraph`
-
-Authenticates to Microsoft Graph using credentials from `config.json`.
-
-`Get-TeamsWithoutOwners`
-
-Fetches all Teams and identifies those without an owner.
-
-`Generate-HTMLReport`
-
-Reads the `EmailTemplate.xml` file and injects the Teams data.
-
-`Send-Email`
-
-Sends the report via SMTP using the settings from `config.json`.
-
-🚀 Usage
-
-1️⃣ Setup
-
-Make sure `config.json` is properly configured.
-
-Ensure `EmailTemplate.xml` contains the correct HTML structure.
-
-2️⃣ Run the Script
-
-Run the following command in PowerShell:
-
-powershell
+### Run the Script
+```powershell
 .\TeamsOwnerReport.ps1
+```
 
-3️⃣ Expected Behavior
+---
 
-✅ The script will:
+## 📁 Project Structure
+```
+.
+└── src/
+    ├── TeamsOwnerReport.ps1   # Main script
+    ├──  Functions.ps1         # Core functions
+    ├── config.json            # Configuration
+    ├── EmailTemplate.xml      # Email template
+    └── README.md              # Documentation
+```
 
-Connect to Microsoft Graph
+---
 
-Retrieve Teams without owners
+## 🛠️ Core Functions
+| Function | Description |
+|----------|-------------|
+| `Get-Config` | Configuration manager |
+| `Connect-MicrosoftGraph` | Graph authentication |
+| `Get-TeamsWithoutOwners` | Teams monitoring |
+| `Generate-HTMLReport` | Report generation |
+| `Send-Email` | Email distribution |
 
-Generate an HTML email
+---
 
-Send the report to the recipients in `config.json`
+## ❓ Troubleshooting
+### Authentication Issues
+```powershell
+# Verify connection
+Connect-MgGraph -ClientId $config.ClientId -TenantId $config.TenantId
+```
 
-Skip sending the email if no Teams are missing owners
+### Email Configuration
+```powershell
+# Test email settings
+Send-MailMessage -SmtpServer $config.SmtpServer -From $config.From -To $config.Recipients -Subject "Test"
+```
 
-📌 Example Output (Email Report)
+---
 
-Team Without Owner
+## 🤝 Contributing
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
-Members
+---
 
-Marketing Team
+## 👨‍💻 Author
+**Fatih BAYRAM**  
+GitHub: [@yourusername](https://github.com/fabayram?tab=repositories)  
+LinkedIn: [@yourprofile]((https://www.linkedin.com/in/fbayram/))
 
-John Doe, Jane Smith
+---
 
-HR Team
+## 🙏 Acknowledgments
+- Microsoft Graph Team
+- PowerShell Community
+- All Contributors
 
-Alice Brown, Bob White
+---
 
-🛠 Troubleshooting
+<p align="center">Made with ❤️ for the community</p>
 
-❌ `Connect-MicrosoftGraph` fails
-
-Check if your Client ID, Tenant ID, and Client Secret are correct.
-
-Ensure the Azure AD App has the required Graph API permissions.
-
-❌ `Send-Email` fails
-
-Check if your SMTP server is correct in `config.json`.
-
-Verify if your email address has permissions to send emails.
-
-📜 License
-
-This script is open-source and licensed under the MIT License.
-
-👨‍💻 Author
-
-Fatih BAYRAMFeel free to contribute or report issues!
-
-⭐ Contributions & Feedback
-
-💡 Found a bug? Have a suggestion?Create an Issue or open a Pull Request on GitHub! 🚀
+If you like this project, please consider giving it a ⭐!
