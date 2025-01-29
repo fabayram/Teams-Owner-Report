@@ -80,7 +80,7 @@ Edit `config.json` to match your environment:
 .
 └── src/
     ├── TeamsOwnerReport.ps1   # Main script
-    ├──  Functions.ps1         # Core functions
+    ├── Functions.ps1          # Core functions
     ├── config.json            # Configuration
     ├── EmailTemplate.xml      # Email template
     └── README.md              # Documentation
