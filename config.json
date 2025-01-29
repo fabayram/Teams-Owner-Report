@@ -1,0 +1,16 @@
+{
+    "MicrosoftGraph": {
+        "ClientId": "your-client-id",
+        "TenantId": "your-tenant-id",
+        "ClientSecret": "your-client-secret",
+		"AppName": "your-app-name" 
+    },
+    "SMTP": {
+        "Server": "mx@domain.com",
+        "From": "noreply@yourcompany.com",
+        "Recipients": [
+            "user1@example.com",
+            "user2@example.com"
+        ]
+    }
+}

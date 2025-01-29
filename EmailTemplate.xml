@@ -1,0 +1,27 @@
+<Email>
+    <Subject>[$Date] Report: Teams Without Owners</Subject>
+    <Body>
+        <![CDATA[
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Teams Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; }
+                table { border-collapse: collapse; width: 100%; }
+                th, td { border: 1px solid black; padding: 8px; text-align: left; }
+                th { background-color: #007bff; color: white; }
+            </style>
+        </head>
+        <body>
+            <h1 style="color: #007bff;">📩 Automated Report - Teams Without Owners</h1>
+            <p>Hello,</p>
+            <p>Here is the list of Teams without owners:</p>
+            $TableHTML
+            <p>Best regards,<br />IT Department</p>
+        </body>
+        </html>
+        ]]>
+    </Body>
+</Email>
