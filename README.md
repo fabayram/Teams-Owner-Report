@@ -1,5 +1,3 @@
-📝 Teams Without Owners Report
-
 📌 Overview
 
 This PowerShell script connects to Microsoft Graph, retrieves all Microsoft Teams without owners, generates an HTML report using an XML template, and sends it via email.
@@ -8,18 +6,20 @@ The script is modular, configurable, and follows best practices for maintainabil
 
 ⚡ Features
 
-✅ Automated Microsoft Graph Connection using credentials from config.json✅ Retrieves Teams without Owners efficiently✅ Generates an HTML report using a customizable EmailTemplate.xml✅ Sends an email report using SMTP settings from config.json✅ Structured in multiple files for clean and maintainable code
+✅ Automated Microsoft Graph Connection using credentials from config.json
+✅ Retrieves Teams without Owners efficiently
+✅ Generates an HTML report using a customizable EmailTemplate.xml
+✅ Sends an email report using SMTP settings from config.json
+✅ Structured in multiple files for clean and maintainable code
 
 📂 Project Structure
 
-```
 📂 TeamsOwnerReport
 │── 📄 TeamsOwnerReport.ps1  # Main script
 │── 📄 Functions.ps1         # Contains all PowerShell functions
 │── 📄 config.json           # Configuration file (credentials & settings)
 │── 📄 EmailTemplate.xml     # HTML email template
 │── 📄 README.md             # Documentation
-```
 
 🔧 Prerequisites
 
@@ -29,7 +29,6 @@ PowerShell 7+ (Recommended)
 
 Microsoft Graph PowerShell SDKInstall with:```powershell
 Install-Module Microsoft.Graph -Scope CurrentUser
-```
 
 🔑 Microsoft Graph API Permissions
 
@@ -47,7 +46,7 @@ The App Registration in Azure AD must have the following permissions:
 
 The script uses a JSON configuration file (`config.json`) to store all settings:
 
-```json
+json
 {
 "MicrosoftGraph": {
 "ClientId": "your-client-id",
@@ -64,7 +63,6 @@ The script uses a JSON configuration file (`config.json`) to store all settings:
 ]
 }
 }
-```
 
 📌 Modify this file with your actual credentials before running the script.
 
@@ -72,14 +70,10 @@ The script uses a JSON configuration file (`config.json`) to store all settings:
 
 The script loads the HTML email content from an external XML file (`EmailTemplate.xml`).You can customize it without modifying the script.
 
-```xml
+xml
 
 [$Date] Report: Teams Without Owners
 
-
-
-
-```
 
 The `$TableHTML` placeholder is dynamically replaced with the Teams data.
 
@@ -121,9 +115,8 @@ Ensure `EmailTemplate.xml` contains the correct HTML structure.
 
 Run the following command in PowerShell:
 
-```powershell
+powershell
 .\TeamsOwnerReport.ps1
-```
 
 3️⃣ Expected Behavior
 
